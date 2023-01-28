@@ -9,20 +9,21 @@ import {
   Input,
   FormLabel, Box,
   FormErrorMessage,
-  FormHelperText, Badge, Stack, Center, Button, Alert, VStack, Textarea, Text
+  FormHelperText, Badge, Stack, Center, Button, Alert, VStack, Textarea, Text,useToast
   // AlertIcon,
   // AlertTitle,
   // AlertDescription,
 } from '@chakra-ui/react'
 
-import FormData from '../components/form'
+import FormData from '../components/form' // import from component example : form
 import AlertComponent from '../components/alert'
 import Router from 'next/router';
 import { useState } from "react";
 
 export default function Home() {
 
-  const [value, changeValue] = useState("");
+  const [value, changeValue] = useState(""); // set state for handle data from form field
+  const toast = useToast(); // use toast, please install chakra ui toast first
 
   function hanldeData(params) {
 
@@ -41,16 +42,26 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FormData inputValue={value} onInputValueChange={changeValue}></FormData>
+      <FormData inputValue={value} onInputValueChange={changeValue}></FormData> // call component from compoent folder
       <Box m={10} > <AlertComponent data="fahsdfsdfsmi"></AlertComponent></Box>
 
-      <VStack alignItems="start" m={10} >
+      <VStack alignItems="start" m={3} >
         <Text mb='8px'>Masukkan Deskripsi kendala pada Talis 30MJ {value}</Text>
         <Textarea></Textarea>
       </VStack>
 
 
       <Button colorScheme='blue' onClick={() => Router.push('/frame-record')}>Button</Button>
+      <Button colorScheme='blue' onClick={() => 
+
+      // this for call the toast
+      toast({
+        title: 'Account created.',
+        description: `We've created your account for you. ${value}`,
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+    })}>toast</Button>
 
 
       {/* <Center>

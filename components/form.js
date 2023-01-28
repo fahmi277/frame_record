@@ -17,8 +17,9 @@ export default function FormData(props) {
     return (
         <>
     <Center>
-        <Box m={10}>
-            <Stack direction='row'>
+        <Box >
+            {/* Stack menentukan size dari form */}
+            <Stack direction='row'> 
                 <Box >   <FormControl >
                     <FormLabel>Masukkan Nama sdgfdg </FormLabel>
                     <Input 

@@ -2,22 +2,39 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import * as React from 'react';
+// import React from 'react';
+// import { ChakraProvider} from "@chakra-ui/react";
 // import Button from '@mui/material/Button';
+
+import FormData from '@/components/form'
+// import AlertComponent from './'
 
 import {
     FormControl,
     FormLabel,
     FormErrorMessage,
-    FormHelperText, Button, Input, Box
+    FormHelperText, Button, Input, Box, ChakraProvider, useToast
 } from '@chakra-ui/react'
+
+import { useState } from "react";
+
+// import { useToast } from "@chakra-ui/react";
 
 // import { Button, ButtonGroup } from '@chakra-ui/react'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
+function testToast(params) {
+
+
+
+}
+
+
 export default function Home() {
+    const [value, changeValue] = useState("");
+    const toast = useToast();
     return (
         <>
             <Head>
@@ -26,21 +43,32 @@ export default function Home() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}>
+            {/* <main className={styles.main}> */}
                 {/* <div className={styles.description}> */}
                 {/* <Button variant="contained">Hello World</Button> */}
                 {/* </div> */}
-                <Box m={2} borderColor='gray.200'>
-                    <FormControl>
-                        <FormLabel>Email address</FormLabel>
-                        <Input type='email' />
-                        <FormHelperText>We'll never share your email.</FormHelperText>
+                <ChakraProvider>
+                <FormData inputValue={value} onInputValueChange={changeValue}></FormData>
+                    <Box  borderColor='gray.200'>
+                        <FormControl>
+                            <FormLabel>Email address</FormLabel>
+                            <Input type='email' />
+                            <FormHelperText>We'll never share your email.</FormHelperText>
 
-                        <Box p={2}>  <Button colorScheme='blue'>Button</Button></Box>
-                    </FormControl>
-                </Box>
+                            <Box p={2} onClick={() => toast({
+                                title: 'Account created.',
+                                description: "We've created your account for you.",
+                                status: 'success',
+                                duration: 9000,
+                                isClosable: true,
+                                position:'top'
+                            })}>  <Button colorScheme='blue'>Button</Button></Box>
+                        </FormControl>
+                    </Box>
+                </ChakraProvider>
 
-            </main>
+
+            {/* </main> */}
         </>
     )
 }
