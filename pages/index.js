@@ -2,10 +2,36 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-
+import { Field, Form, Formik } from 'formik';
 const inter = Inter({ subsets: ['latin'] })
+import {
+  FormControl,
+  Input,
+  FormLabel, Box,
+  FormErrorMessage,
+  FormHelperText, Badge, Stack, Center, Button, Alert, VStack, Textarea, Text
+  // AlertIcon,
+  // AlertTitle,
+  // AlertDescription,
+} from '@chakra-ui/react'
+
+import FormData from '../components/form'
+import AlertComponent from '../components/alert'
+import Router from 'next/router';
+import { useState } from "react";
 
 export default function Home() {
+
+  const [value, changeValue] = useState("");
+
+  function hanldeData(params) {
+
+    console.log(value);
+
+  }
+
+
+
   return (
     <>
       <Head>
@@ -14,7 +40,38 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+
+      <FormData inputValue={value} onInputValueChange={changeValue}></FormData>
+      <Box m={10} > <AlertComponent data="fahsdfsdfsmi"></AlertComponent></Box>
+
+      <VStack alignItems="start" m={10} >
+        <Text mb='8px'>Masukkan Deskripsi kendala pada Talis 30MJ {value}</Text>
+        <Textarea></Textarea>
+      </VStack>
+
+
+      <Button colorScheme='blue' onClick={() => Router.push('/frame-record')}>Button</Button>
+
+
+      {/* <Center>
+        <Box m={10}>
+          <Stack direction='row'>
+            <Box >   <FormControl >
+              <FormLabel>Masukkan Nama </FormLabel>
+              <Input placeholder='Nama Anda' borderRadius="16px"/>
+            </FormControl></Box>
+            <Box>  <FormControl isRequired>
+              <FormLabel>First name</FormLabel>
+              <Input placeholder='First name' />
+            </FormControl></Box>
+          </Stack>
+        </Box>
+      </Center> */}
+
+
+
+
+      {/* <main className={styles.main}>
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
@@ -117,7 +174,7 @@ export default function Home() {
             </p>
           </a>
         </div>
-      </main>
+      </main> */}
     </>
   )
 }
