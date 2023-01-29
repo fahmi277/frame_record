@@ -42,7 +42,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <FormData inputValue={value} onInputValueChange={changeValue}></FormData> // call component from compoent folder
+      <FormData inputValue={value} onInputValueChange={changeValue}></FormData>
       <Box m={10} > <AlertComponent data="fahsdfsdfsmi"></AlertComponent></Box>
 
       <VStack alignItems="start" m={3} >
@@ -54,7 +54,7 @@ export default function Home() {
       <Button colorScheme='blue' onClick={() => Router.push('/frame-record')}>Button</Button>
       <Button colorScheme='blue' onClick={() => 
 
-      // this for call the toast
+   
       toast({
         title: 'Account created.',
         description: `We've created your account for you. ${value}`,
