@@ -19,7 +19,7 @@ export default function alert(props) {
         <>
             <Alert status='error'>
                 <AlertIcon />
-                <AlertTitle>Your browser is outdated! {props.data}</AlertTitle>
+                <AlertTitle>Your browser is outdated! okay {props.data}</AlertTitle>
                 <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
             </Alert>
         </>
